@@ -28,11 +28,20 @@ void ADD_ELEMENT_TO_SET(struct Set* set, void* data){
   }
 }
 
-void* REMOVE_ELEMENT_FROM_SET(struct Set* set, void* data){
+void* REMOVE_ELEMENT_FROM_SET_RAW(struct Set* set, void* data){
   if(CONTAINS_SET(set, data)){
     return REMOVE_ELEMENT_IN_LL_RAW(set->ll, data);
   } else {
     printf("Error: While removing element from set the set doesnt contain the required element");
+    return NULL;
+  }
+}
+
+void* FETCH_ELEMENT_FROM_SET_RAW(struct Set* set, void* data){
+  if(CONTAINS_SET(set, data)){
+    return FETCH_ELEMENT_IN_LL_RAW(set->ll, data);
+  } else {
+    printf("Error: While fetching element from set the set doesnt contain the required element");
     return NULL;
   }
 }

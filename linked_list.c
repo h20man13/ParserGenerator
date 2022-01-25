@@ -266,6 +266,27 @@ void* REMOVE_ELEMENT_IN_LL_RAW(struct LL* ll, void* data){
   }
 }
 
+void* FETCH_ELEMENT_IN_LL_RAW(struct LL* ll, void* data){
+  if(ll == NULL){
+    printf("Error: When getting the size of the list it appears that the list wasnt declared correctly!!\n");
+    return NULL;
+  } else if(EMPTY_LL(ll)){
+    printf("Error: cant remove element at because the list is empty!!\n");
+    return NULL;
+  } else {
+    struct Node* temp;
+
+    for(temp = ll->head; temp != NULL && !ll->compareFunc(temp->data, data); temp=temp->next);
+
+    if(temp == NULL){
+      printf("Element doesnt exist in list!!\n");
+      return NULL;
+    } else {
+      return temp->data;
+    }
+  }
+}
+
 void DELETE_LL(struct LL* ll){
   if(ll == NULL){
     printf("Error: While deleting list it appears the list was not initialized correctly!!\n");
